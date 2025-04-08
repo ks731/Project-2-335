@@ -164,24 +164,21 @@ void Inventory<Comparator, Tree>::queryHelper(const Item& start, const Item& end
     if(root == nullptr){
         return;
     }
-    Comparator compare;
     const Item& cItem = root->value_;
 
     //if current item is less than start, check only right subtree
-    if(compare.lessThan(cItem, start)){
-        queryHelper(start,end, root->right_,  result);
+    if(Comparator.leq(start, cItem)){
+        queryHelper(start,end, root->left_,  result);
     }
-
-    //if current item is greater than end only check left subtree
-    if(compare.lessThan(end,cItem)){
-        queryHelper(start, end, root->left_, result);
-    }
-
-    else{
+    if(Comparator::leq(start, cItem) && Comparator::leq(cItem, end)){
         result.insert(cItem);
-        queryHelper(start, end, root->left_, result);
+    }
+    //if current item is greater than end only check left subtree
+    if(Comparator.leq(cItem,end)){
         queryHelper(start, end, root->right_, result);
     }
+
+
 }
 
 /**
