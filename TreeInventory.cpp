@@ -161,7 +161,7 @@ void Inventory<Comparator, Tree>::queryHelper(const Item& start, const Item& end
     if(root == nullptr){
         return;
     }
-]    const Item& cItem = root->value_;
+       const Item& cItem = root->value_;
 
     //if current item is less than start, check only right subtree
     if(Comparator.lessThan(cItem, start)){
