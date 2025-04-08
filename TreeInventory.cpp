@@ -149,6 +149,9 @@ bool Inventory<Comparator, Tree>::contains(const std::string& itemName) const
 template <class Comparator>
 std::unordered_set<Item> Inventory<Comparator, Tree>::query(const Item& start, const Item& end) const
 {
+    if(Comparator::lessThan(end,start)){
+        return {};
+    }
     std::unordered_set<Item> result;
     queryHelper(start, end, items_.root(), result);
     return result;
