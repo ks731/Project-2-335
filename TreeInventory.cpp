@@ -1,4 +1,4 @@
- #include "TreeInventory.hpp"
+#include "TreeInventory.hpp"
 
 /**
  * @brief Default constructor for the Inventory template class.
