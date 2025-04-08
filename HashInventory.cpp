@@ -168,15 +168,14 @@ std::unordered_set<Item>
 Inventory<Comparator, std::unordered_set<Item>>::query(const Item& start,
     const Item& end) const
 {
-    Comparator compare;
-    if(compare(end,start)){
+    if(Comparator::lessThan(end,start)){
         return {};
     }
 
     std::unordered_set<Item> itemsInRange;
 
     for(const auto& item : items_){
-        if(!compare(item,start) && !compare(end, item)){
+        if(Comparator::leq(start,item) && Comparator::leq(item,end)){
             itemsInRange.insert(item);
         }
     }
