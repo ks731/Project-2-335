@@ -143,8 +143,7 @@ template <class Comparator>
 bool Inventory<Comparator, std::unordered_set<Item>>::contains(
     const std::string& itemName) const
 {
-    Item findItem(itemName, 0.0, ItemType:NONE);
-    return items_.find(findItem) != items_.end();
+    return items_.find(itemName) != items_.end();
 }
 
 /**
